@@ -1,0 +1,222 @@
+/* Hover shadow effect */
+.hover-shadow:hover {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+/* Transition utility */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Improved dropdown styling */
+.dropdown-menu {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Subject image styling */
+.subject-image {
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1rem;
+  }
+  .subject-image-col {
+    height: 200px;
+  }
+}
+
+/* Badge styling */
+.badge {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Pagination */
+.pagination .page-item.active .page-link {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.page-link {
+  color: #0d6efd;
+}
+
+/* Subject Detail Page */
+.subject-thumbnail {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #dee2e6;
+}
+.accordion-button:not(.collapsed) {
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Sticky sidebar for larger screens */
+@media (min-width: 992px) {
+  .sticky-top {
+    position: sticky;
+    z-index: 1000;
+  }
+}
+
+/* Breadcrumb styling */
+.breadcrumb {
+  padding: 0.75rem 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
+}
+
+/* Subject card design */
+.subject-card {
+  border-radius: 8px;
+  border-left: 4px solid #0d6efd;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.subject-card:hover {
+  transform: scale(1.03);
+}
+
+/* Subject card overlay */
+.subject-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
+}
+.subject-overlay h5,
+.subject-overlay p {
+  margin: 0;
+}
+
+/* Card content spacing */
+.card-body-content {
+  padding: 1.25rem;
+}
+
+/* Download badge */
+.resource-badge {
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Navbar & header */
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+.navbar .form-control {
+  width: 350px;
+}
+
+/* Body & hero section */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+}
+.hero {
+  background: #ffffff;
+  padding: 60px 20px;
+}
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Semester Section */
+.semester-section h2 {
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+/* Card design */
+.card {
+  background: linear-gradient(145deg, #1f1f1f, #2e2e2e);
+  color: #f5f5f5;
+  border: 1px solid #333;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.2);
+}
+.card .card-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #00e5ff;
+}
+.card .card-text {
+  font-size: 0.9rem;
+  color: #b0bec5;
+}
+.card .btn-outline-primary {
+  border-color: #00e5ff;
+  color: #00e5ff;
+}
+.card .btn-outline-primary:hover {
+  background-color: #00e5ff;
+  color: #1a1a1a;
+  border-color: #00e5ff;
+}
+
+/* Footer */
+.footer {
+  background-color: #212529;
+  color: #fff;
+  padding: 20px 0;
+}
+
+/* Shared content */
+.container h2 {
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #333;
+}
+.list-group-item {
+  font-size: 1.05rem;
+  padding: 12px 18px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.table {
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Form styling */
+form input,
+form textarea {
+  border-radius: 6px;
+}
+form .btn-primary {
+  padding: 10px 20px;
+  font-weight: 500;
+}
+
+
+
+

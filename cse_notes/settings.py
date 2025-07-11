@@ -20,13 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-import os
+SECRET_KEY = 'django-insecure-&epf9cf$96z1r!e)nbunfoxqll3&kzk0z2n(7mqt7874ujmtwq'
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
 
-
-ALLOWED_HOSTS = ['CSEBUDDY.pythonanywhere.com']
+ALLOWED_HOSTS = ['CSEbuddy.pythonanywhere.com']
 
 
 
@@ -78,17 +77,10 @@ WSGI_APPLICATION = 'cse_notes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'CSEbuddy$default',
-        'USER': 'CSEbuddy',
-        'PASSWORD': 'AlR@Fi21oo38',
-        'HOST': 'CSEbuddy.mysql.pythonanywhere-services.com',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 
 # Password validation
@@ -122,7 +114,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Near other static files settings
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # or any other path you prefer
+  # or any other path you prefer
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
@@ -147,3 +139,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
   
 
+STATIC_ROOT = BASE_DIR / "staticfiles"

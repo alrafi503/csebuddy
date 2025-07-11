@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSE Buddy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <!-- Modified Navbar with Working Search -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand fw-bold" href="{% url 'home' %}">CSE BUDDY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <form class="d-flex mx-auto" role="search" action="{% url 'home' %}" method="get">
+          <input class="form-control me-2" 
+                 type="search" 
+                 name="q" 
+                 placeholder="Search subjects..." 
+                 aria-label="Search"
+                 value="{{ request.GET.q }}">
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="{% url 'request_docs' %}">Request for Documents</a></li>
+              <li><a class="dropdown-item" href="{% url 'syllabus' %}">Syllabus</a></li>
+              <li><a class="dropdown-item" href="{% url 'grade_distribution' %}">Grade Points Distribution</a></li>
+              <li><a class="dropdown-item" href="{% url 'notice' %}">Important Notice</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <a href="/admin/" class="btn btn-outline-warning btn-sm">Admin Login</a>
+          <a href="https://www.diit.edu.bd/" target="_blank">
+            <img src="{% static 'images/diit logo.png' %}" alt="DIIT Logo" height="40" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container text-center">
+      <h1>Welcome to CSE Notes Archive</h1>
+      <p class="lead">Browse organized notes from 8 semesters of CSE — always free and accessible.</p>
+    </div>
+  </section>
+
+  <!-- Conditional Content Based on Search -->
+  <section class="semester-section py-5">
+    <div class="container">
+      {% if request.GET.q %}
+        <h2 class="text-center mb-4">Search Results for "{{ request.GET.q }}"</h2>
+        
+        {% if subjects %}
+          <div class="row g-4">
+            {% for subject in subjects %}
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm">
+                {% if subject.image %}
+                <img src="{{ subject.image.url }}" class="card-img-top" alt="{{ subject.title }}" style="height: 180px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{ subject.title }}</h5>
+                  {% if subject.code %}
+                  <span class="badge bg-primary mb-2">{{ subject.code }}</span>
+                  {% endif %}
+                  <p class="card-text">{{ subject.description|truncatewords:20 }}</p>
+                   <div class="mt-auto">  <!-- Pushes button down -->
+                   <a href="{% url 'subject_detail' subject.slug %}" class="btn btn-primary w-100 mt-auto">
+                   <i class="bi bi-folder2-open"></i> View All Resources
+                   </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-info text-center">
+            No subjects found matching "{{ request.GET.q }}"
+          </div>
+          <div class="text-center mt-3">
+            <a href="{% url 'home' %}" class="btn btn-primary">
+              View All Semesters
+            </a>
+          </div>
+        {% endif %}
+      
+      {% else %}
+        <!-- Original Semester Cards (shown when not searching) -->
+        <h2 class="text-center mb-4">Select Your Semester</h2>
+        <div class="row g-4">
+          {% for num in "12345678" %}
+          <div class="col-md-3 col-sm-6">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body text-center">
+                <h5 class="card-title">Semester {{ num }}</h5>
+                <p class="card-text">Subjects and notes for Semester {{ num }}</p>
+                <a href="{% url 'semester_view' num %}" class="btn btn-outline-primary">View Notes</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer mt-auto">
+    <div class="container text-center">
+      <p style="margin-bottom: 5px;">Created by <strong>Al-Rafi Chowdhury</strong></p>
+      <p style="margin-bottom: 5px;"><a href="mailto:al-rafi210038@diit.edu.bd">al-rafi210038@diit.edu.bd</a></p>
+      <p style="margin-bottom: 0;"><a href="tel:+8801940372926">+8801940372926</a></p>
+    </div>
+  </footer>
+</body>
+</html>
